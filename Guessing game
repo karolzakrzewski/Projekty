@@ -1,0 +1,25 @@
+from random import randint
+import sys
+guesses = 7
+number = randint(1,101)
+
+print('remaining tries: ',guesses)
+guess = int(input('zgaduj: ')) # pierwszy input
+
+while guess != number:
+    if guesses == 0:
+        print('you lost. the end')
+        sys.exit(0)
+    elif guess < number:
+        print('not enough')
+        guess = int(input('nochmal: '))  
+        guesses -=1
+        print('remaining tries: ',guesses)
+    elif guess > number:
+        print('too much')
+        guess = int(input('one more time: '))  
+        guesses -=1
+        print('remaining tries: ',guesses)
+    
+print ('gj')
+sys.exit(0)
