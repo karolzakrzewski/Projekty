@@ -1,0 +1,48 @@
+import sys 
+
+nr_of_tries = 8  
+word = 'lupka'  
+used_letters = [] 
+
+user_word = [] 
+
+def show_game_state():  
+    print()
+    print('word to guess: ',user_word)
+    print('already used letters: ',used_letters)
+    print('remaining tries: ', nr_of_tries)
+    print()
+
+def find_indexes(word): 
+    indexes = []  
+
+    for index, letter_in_word in enumerate(word): 
+        if letter == letter_in_word: 
+            indexes.append(index)  
+
+    return indexes 
+
+for anything in word: 
+    user_word.append('_') 
+
+while True:
+    letter = input('input a letter: ')
+    used_letters.append(letter) 
+
+    found_indexes = find_indexes(word) 
+    if len(found_indexes) == 0:  
+        print('no such letter')
+        nr_of_tries -= 1 
+
+        if nr_of_tries == 0:  
+            print('you suck, game over')
+            sys.exit(0) 
+
+    for index in found_indexes:   
+        user_word[index] = letter 
+
+        if ''.join(user_word) == word: 
+            print('GJ! you made it. That was the word to guess: ', word)
+            sys.exit(0)
+
+    show_game_state()
